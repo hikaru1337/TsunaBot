@@ -1,0 +1,314 @@
+15.10.22 17:37:29 [Info]: Discord.Net v3.7.2 (API v9)
+15.10.22 17:37:29 [Info]: Connecting
+15.10.22 17:37:30 [Verbose]: GET gateway: 528,53 ms
+15.10.22 17:37:31 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:37:31 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:37:31 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:37:31 [Info]: Connected
+15.10.22 17:37:31 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:37:31 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:37:32 [Info]: Ready
+15.10.22 17:43:48 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 17:43:48 [Info]: Connecting
+15.10.22 17:43:48 [Verbose]: GET gateway/bot: 636,25 ms
+15.10.22 17:43:49 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:43:49 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:43:49 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:43:49 [Info]: Connected
+15.10.22 17:43:50 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:43:50 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:43:50 [Info]: Ready
+15.10.22 17:44:20 [Verbose]: POST channels/789923439406219314/messages: 455,91 ms
+15.10.22 17:44:20 [Verbose]: Executed "modules" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:28 [Verbose]: POST channels/789923439406219314/messages: 309,89 ms
+15.10.22 17:44:28 [Verbose]: Executed "commands" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:30 [Verbose]: POST channels/789923439406219314/messages: 325,18 ms
+15.10.22 17:44:30 [Verbose]: Executed "commands" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:35 [Verbose]: POST channels/789923439406219314/messages: 328,27 ms
+15.10.22 17:44:35 [Verbose]: Executed "levelrole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:37 [Warning]: System.TypeInitializationException: The type initializer for 'DarlingNet.Services.LocalService.Errors.Initiliaze' threw an exception.
+ ---> System.IO.FileNotFoundException: Could not find file 'C:\Users\XXXPOSOSI\source\repos\TsunaBot\bin\Debug\net5.0\ErrorsList.json'.
+File name: 'C:\Users\XXXPOSOSI\source\repos\TsunaBot\bin\Debug\net5.0\ErrorsList.json'
+   at System.IO.FileStream.ValidateFileHandle(SafeFileHandle fileHandle)
+   at System.IO.FileStream.CreateFileOpenHandle(FileMode mode, FileShare share, FileOptions options)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks)
+   at System.IO.File.InternalReadAllText(String path, Encoding encoding)
+   at System.IO.File.ReadAllText(String path)
+   at DarlingNet.Services.LocalService.Errors.Initiliaze..cctor() in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\ErrorList\Initiliaze.cs:line 12
+   --- End of inner exception stack trace ---
+   at DarlingNet.Services.LocalService.Errors.Initiliaze.Load(String key) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\ErrorList\Initiliaze.cs:line 15
+   at DarlingNet.Services.LocalService.ErrorMessage.GetError(String error, String prefix, CommandInfo command) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\ErrorList\ErrorMessage.cs:line 22
+   at TsunaBot.Services.CommandHandler.CommandErrors(Optional`1 Command, ICommandContext Context, IResult Result) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\CommandHandler.cs:line 133
+   at Discord.EventExtensions.InvokeAsync[T1,T2,T3](AsyncEvent`1 eventHandler, T1 arg1, T2 arg2, T3 arg3)
+   at Discord.Commands.CommandService.ExecuteAsync(ICommandContext context, String input, IServiceProvider services, MultiMatchHandling multiMatchHandling)
+   at TsunaBot.Services.CommandHandler.SendMessage(SocketMessage message) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\CommandHandler.cs:line 165
+   at Discord.EventExtensions.InvokeAsync[T](AsyncEvent`1 eventHandler, T arg)
+   at Discord.WebSocket.DiscordSocketClient.TimeoutWrap(String name, Func`1 action)
+15.10.22 17:44:42 [Verbose]: POST channels/789923439406219314/messages: 274,9 ms
+15.10.22 17:44:42 [Verbose]: Executed "reprole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:56 [Verbose]: POST channels/789923439406219314/messages: 305,47 ms
+15.10.22 17:44:56 [Verbose]: Executed "levelroleadd" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:59 [Verbose]: POST channels/789923439406219314/messages: 268,67 ms
+15.10.22 17:44:59 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:44:59 [Verbose]: PUT guilds/663380088188043274/members/551373471536513024/roles/790146121670459403: 352,36 ms
+15.10.22 17:45:29 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 17:45:29 [Info]: Connecting
+15.10.22 17:45:29 [Verbose]: GET gateway/bot: 729,37 ms
+15.10.22 17:45:31 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:45:31 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:45:31 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:45:31 [Info]: Connected
+15.10.22 17:45:31 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:45:31 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:45:31 [Info]: Ready
+15.10.22 17:45:46 [Verbose]: POST channels/789923439406219314/messages: 313,08 ms
+15.10.22 17:45:46 [Warning]: Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Roles_User'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__19_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Storage.NonRetryingExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at TsunaBot.Services.Leveling.LVL(SocketUserMessage Message, Users User) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\Leveling.cs:line 24
+   at TsunaBot.Services.CommandHandler.SendMessage(SocketMessage message) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\CommandHandler.cs:line 167
+   at Discord.EventExtensions.InvokeAsync[T](AsyncEvent`1 eventHandler, T arg)
+   at Discord.WebSocket.DiscordSocketClient.TimeoutWrap(String name, Func`1 action)
+15.10.22 17:45:46 [Verbose]: Executed "modules" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:45:48 [Warning]: Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 1: 'no such table: Roles_User'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteCommand.PrepareAndEnumerateStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteCommand.GetStatements(Stopwatch timer)+MoveNext()
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__19_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Storage.NonRetryingExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at TsunaBot.Services.Leveling.LVL(SocketUserMessage Message, Users User) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\Leveling.cs:line 24
+   at TsunaBot.Services.CommandHandler.SendMessage(SocketMessage message) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Services\CommandHandler.cs:line 167
+   at Discord.EventExtensions.InvokeAsync[T](AsyncEvent`1 eventHandler, T arg)
+   at Discord.WebSocket.DiscordSocketClient.TimeoutWrap(String name, Func`1 action)
+15.10.22 17:45:48 [Verbose]: POST channels/789923439406219314/messages: 766,1 ms
+15.10.22 17:45:48 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:52:04 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 17:52:04 [Info]: Connecting
+15.10.22 17:52:05 [Verbose]: GET gateway/bot: 790,92 ms
+15.10.22 17:52:06 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:52:06 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:52:06 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:52:06 [Info]: Connected
+15.10.22 17:52:06 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:52:06 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:52:06 [Info]: Ready
+15.10.22 17:56:42 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 17:56:42 [Info]: Connecting
+15.10.22 17:56:43 [Verbose]: GET gateway/bot: 638,07 ms
+15.10.22 17:56:44 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:56:44 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:56:44 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:56:44 [Info]: Connected
+15.10.22 17:56:44 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:56:45 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:56:45 [Info]: Ready
+15.10.22 17:56:55 [Verbose]: POST channels/789923439406219314/messages: 331,82 ms
+15.10.22 17:56:55 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:57:01 [Verbose]: POST channels/789923439406219314/messages: 366,56 ms
+15.10.22 17:57:01 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:57:09 [Verbose]: POST channels/789923439406219314/messages: 308,68 ms
+15.10.22 17:57:09 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:57:19 [Verbose]: POST channels/789923439406219314/messages: 416,09 ms
+15.10.22 17:57:19 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:57:23 [Error]: Discord.Commands.CommandException: Error occurred executing "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj.
+ ---> Discord.Net.HttpException: The server responded with error 504: GatewayTimeout
+   at Discord.Net.Queue.RequestBucket.SendAsync(RestRequest request)
+   at Discord.Net.Queue.RequestQueue.SendAsync(RestRequest request)
+   at Discord.API.DiscordRestApiClient.SendInternalAsync(String method, String endpoint, RestRequest request)
+   at Discord.API.DiscordRestApiClient.SendJsonAsync[TResponse](String method, String endpoint, Object payload, BucketId bucketId, ClientBucketType clientBucket, RequestOptions options)
+   at Discord.API.DiscordRestApiClient.CreateMessageAsync(UInt64 channelId, CreateMessageParams args, RequestOptions options)
+   at Discord.Rest.ChannelHelper.SendMessageAsync(IMessageChannel channel, BaseDiscordClient client, String text, Boolean isTTS, Embed embed, AllowedMentions allowedMentions, MessageReference messageReference, MessageComponent components, ISticker[] stickers, RequestOptions options, Embed[] embeds, MessageFlags flags)
+   at TsunaBot.Modules.User.userinfo(SocketGuildUser User) in C:\Users\XXXPOSOSI\source\repos\TsunaBot\Modules\User.cs:line 94
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Discord.Commands.ModuleClassBuilder.<>c__DisplayClass6_0.<<BuildCommand>g__ExecuteCallback|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Discord.Commands.CommandInfo.ExecuteInternalAsync(ICommandContext context, Object[] args, IServiceProvider services)
+   --- End of inner exception stack trace ---
+15.10.22 17:57:24 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:57:35 [Verbose]: POST channels/789923439406219314/messages: 242,14 ms
+15.10.22 17:57:36 [Verbose]: POST channels/789923439406219314/messages: 349,85 ms
+15.10.22 17:57:36 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:59:31 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 17:59:31 [Info]: Connecting
+15.10.22 17:59:32 [Verbose]: GET gateway/bot: 637,18 ms
+15.10.22 17:59:33 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 17:59:33 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:59:33 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 17:59:33 [Info]: Connected
+15.10.22 17:59:33 [Verbose]: Connected to DarlingNet_Server
+15.10.22 17:59:33 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 17:59:34 [Info]: Ready
+15.10.22 17:59:43 [Verbose]: POST channels/789923439406219314/messages: 334,92 ms
+15.10.22 17:59:43 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:59:51 [Verbose]: POST channels/789923439406219314/messages: 307,77 ms
+15.10.22 17:59:51 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:59:52 [Verbose]: POST channels/789923439406219314/messages: 300,02 ms
+15.10.22 17:59:52 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:59:54 [Verbose]: POST channels/789923439406219314/messages: 309,94 ms
+15.10.22 17:59:54 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 17:59:57 [Verbose]: POST channels/789923439406219314/messages: 335,91 ms
+15.10.22 17:59:57 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:00 [Verbose]: POST channels/789923439406219314/messages: 402,87 ms
+15.10.22 18:00:00 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:02 [Verbose]: POST channels/789923439406219314/messages: 309,09 ms
+15.10.22 18:00:02 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:03 [Verbose]: POST channels/789923439406219314/messages: 289,93 ms
+15.10.22 18:00:03 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:05 [Verbose]: POST channels/789923439406219314/messages: 291,91 ms
+15.10.22 18:00:05 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:07 [Verbose]: Preemptive Rate limit triggered: POST channels/789923439406219314/messages (Bucket: a06de0de4a08126315431cc0c55ee3dc)
+15.10.22 18:00:07 [Verbose]: POST channels/789923439406219314/messages: 472,56 ms
+15.10.22 18:00:07 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:09 [Verbose]: POST channels/789923439406219314/messages: 271,26 ms
+15.10.22 18:00:09 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:11 [Verbose]: POST channels/789923439406219314/messages: 345,54 ms
+15.10.22 18:00:11 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:13 [Verbose]: POST channels/789923439406219314/messages: 290,07 ms
+15.10.22 18:00:13 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:16 [Verbose]: POST channels/789923439406219314/messages: 344,77 ms
+15.10.22 18:00:16 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:19 [Verbose]: POST channels/789923439406219314/messages: 332,63 ms
+15.10.22 18:00:19 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:23 [Verbose]: POST channels/789923439406219314/messages: 331,52 ms
+15.10.22 18:00:23 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:25 [Verbose]: POST channels/789923439406219314/messages: 313,61 ms
+15.10.22 18:00:25 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:27 [Verbose]: POST channels/789923439406219314/messages: 262,92 ms
+15.10.22 18:00:27 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:29 [Verbose]: POST channels/789923439406219314/messages: 336,38 ms
+15.10.22 18:00:29 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:33 [Verbose]: POST channels/789923439406219314/messages: 288,25 ms
+15.10.22 18:00:33 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:35 [Verbose]: POST channels/789923439406219314/messages: 387,02 ms
+15.10.22 18:00:35 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:37 [Verbose]: POST channels/789923439406219314/messages: 306,03 ms
+15.10.22 18:00:37 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:39 [Verbose]: POST channels/789923439406219314/messages: 271,94 ms
+15.10.22 18:00:39 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:41 [Verbose]: POST channels/789923439406219314/messages: 297,53 ms
+15.10.22 18:00:41 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:43 [Verbose]: POST channels/789923439406219314/messages: 319,27 ms
+15.10.22 18:00:43 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:45 [Verbose]: POST channels/789923439406219314/messages: 347,43 ms
+15.10.22 18:00:45 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:47 [Verbose]: POST channels/789923439406219314/messages: 394,41 ms
+15.10.22 18:00:47 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:50 [Verbose]: POST channels/789923439406219314/messages: 297,58 ms
+15.10.22 18:00:50 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:00:55 [Verbose]: POST channels/789923439406219314/messages: 310,39 ms
+15.10.22 18:00:55 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:01:00 [Verbose]: POST channels/789923439406219314/messages: 342,97 ms
+15.10.22 18:01:00 [Verbose]: POST channels/789923439406219314/messages: 401,24 ms
+15.10.22 18:01:00 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:01:18 [Verbose]: POST channels/789923439406219314/messages: 713,36 ms
+15.10.22 18:01:18 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:02:41 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 18:02:41 [Info]: Connecting
+15.10.22 18:02:42 [Verbose]: GET gateway/bot: 643,56 ms
+15.10.22 18:02:43 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 18:02:43 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:02:43 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:02:43 [Info]: Connected
+15.10.22 18:02:43 [Verbose]: Connected to DarlingNet_Server
+15.10.22 18:02:43 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 18:02:44 [Info]: Ready
+15.10.22 18:03:21 [Verbose]: POST channels/789923439406219314/messages: 325,57 ms
+15.10.22 18:03:21 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:03:38 [Verbose]: POST channels/789923439406219314/messages: 652,96 ms
+15.10.22 18:03:38 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:07:21 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 18:07:21 [Info]: Connecting
+15.10.22 18:07:22 [Verbose]: GET gateway/bot: 581,69 ms
+15.10.22 18:07:23 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 18:07:23 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:07:23 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:07:23 [Info]: Connected
+15.10.22 18:07:23 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 18:07:23 [Verbose]: Connected to DarlingNet_Server
+15.10.22 18:07:24 [Info]: Ready
+15.10.22 18:07:36 [Verbose]: POST channels/789923439406219314/messages: 295,05 ms
+15.10.22 18:07:36 [Verbose]: Executed "modules" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:07:39 [Verbose]: POST channels/789923439406219314/messages: 297,59 ms
+15.10.22 18:07:39 [Verbose]: Executed "commands" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:07:50 [Verbose]: POST channels/789923439406219314/messages: 275,05 ms
+15.10.22 18:07:50 [Verbose]: Executed "commands" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:08:11 [Verbose]: POST channels/789923439406219314/messages: 367,86 ms
+15.10.22 18:08:11 [Verbose]: Executed "levelrole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:08:21 [Verbose]: POST channels/789923439406219314/messages: 315,53 ms
+15.10.22 18:08:21 [Verbose]: Executed "levelroleadd" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:08:30 [Verbose]: POST channels/789923439406219314/messages: 300,84 ms
+15.10.22 18:08:30 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:08:38 [Verbose]: POST channels/789923439406219314/messages: 340,69 ms
+15.10.22 18:08:38 [Verbose]: Executed "levelroleadd" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:08:51 [Verbose]: PUT guilds/663380088188043274/members/551373471536513024/roles/790152278199762974: 298,14 ms
+15.10.22 18:08:51 [Verbose]: POST channels/789923439406219314/messages: 253,7 ms
+15.10.22 18:08:51 [Verbose]: POST channels/789923439406219314/messages: 302,36 ms
+15.10.22 18:08:51 [Verbose]: Executed "levelroleadd" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:09:00 [Verbose]: POST channels/789923439406219314/messages: 260,41 ms
+15.10.22 18:09:00 [Verbose]: Executed "levelrole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:12:22 [Verbose]: POST channels/789923439406219314/messages: 369,18 ms
+15.10.22 18:12:22 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:16:14 [Verbose]: POST channels/789923439406219314/messages: 375,13 ms
+15.10.22 18:16:14 [Verbose]: Executed "userinfo" for ⁦Deleted User e83758db⁩#9618 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:29:06 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 18:29:06 [Info]: Connecting
+15.10.22 18:29:07 [Verbose]: GET gateway/bot: 610,18 ms
+15.10.22 18:29:08 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 18:29:08 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:29:08 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:29:08 [Info]: Connected
+15.10.22 18:29:09 [Verbose]: Connected to DarlingNet_Server
+15.10.22 18:29:09 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 18:29:09 [Info]: Ready
+15.10.22 18:30:21 [Info]: Discord.Net v3.8.1 (API v10)
+15.10.22 18:30:21 [Info]: Connecting
+15.10.22 18:30:22 [Verbose]: GET gateway/bot: 649,8 ms
+15.10.22 18:30:23 [Warning]: You're using the GuildPresences intent without listening to the PresenceUpdate event, consider removing the intent from your config.
+15.10.22 18:30:23 [Warning]: You're using the GuildScheduledEvents gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:30:23 [Warning]: You're using the GuildInvites gateway intent without listening to any events related to that intent, consider removing the intent from your config.
+15.10.22 18:30:23 [Info]: Connected
+15.10.22 18:30:24 [Verbose]: Connected to 1P L A N T A T I O N 🚀
+15.10.22 18:30:24 [Verbose]: Connected to DarlingNet_Server
+15.10.22 18:30:24 [Info]: Ready
+15.10.22 18:30:32 [Verbose]: POST channels/789923439406219314/messages: 362,79 ms
+15.10.22 18:30:32 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:30:37 [Verbose]: POST channels/789923439406219314/messages: 278,6 ms
+15.10.22 18:30:37 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:30:43 [Verbose]: POST channels/789923439406219314/messages: 294,4 ms
+15.10.22 18:30:43 [Verbose]: Executed "reprole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:30:54 [Verbose]: POST channels/789923439406219314/messages: 270,96 ms
+15.10.22 18:30:54 [Verbose]: Executed "reproleadd" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:30:59 [Verbose]: PUT guilds/663380088188043274/members/551373471536513024/roles/790146965035941921: 246,56 ms
+15.10.22 18:30:59 [Verbose]: POST channels/789923439406219314/messages: 354,56 ms
+15.10.22 18:30:59 [Verbose]: Executed "reprole" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:31:15 [Verbose]: PUT guilds/663380088188043274/members/617261910139600896/roles/790146965035941921: 248,59 ms
+15.10.22 18:31:15 [Verbose]: POST channels/789923439406219314/messages: 272,35 ms
+15.10.22 18:31:15 [Verbose]: Executed "Rep" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:31:25 [Verbose]: POST channels/789923439406219314/messages: 297,57 ms
+15.10.22 18:31:25 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:31:30 [Verbose]: POST channels/789923439406219314/messages: 277,28 ms
+15.10.22 18:31:30 [Verbose]: Executed "userinfo" for ⁦Lil hika⁩#3565 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:32:51 [Verbose]: POST channels/789923439406219314/messages: 456,62 ms
+15.10.22 18:32:51 [Verbose]: Executed "Rep" for ⁦Deleted User e83758db⁩#9618 in 1P L A N T A T I O N 🚀/yjttyjtyj
+15.10.22 18:32:52 [Verbose]: POST channels/789923439406219314/messages: 273,48 ms
+15.10.22 18:32:52 [Verbose]: Executed "Rep" for ⁦Deleted User e83758db⁩#9618 in 1P L A N T A T I O N 🚀/yjttyjtyj

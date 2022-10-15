@@ -2,7 +2,6 @@
 using Discord;
 using Discord.WebSocket;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TsunaBot.DataBase;
@@ -12,7 +11,6 @@ namespace TsunaBot.Services
 {
     public class Leveling
     {
-
         public static async Task LVL(SocketUserMessage Message,Users User)
         {
             using (db _db = new ())
@@ -28,7 +26,7 @@ namespace TsunaBot.Services
 
                 await Modules.User.RepRole(UserDiscord,User.Reputation);
 
-                var NextLevel = (ulong)Math.Sqrt((User.XP + 10) / 100);
+                var NextLevel = (ulong)Math.Sqrt((User.XP + 10) / Users.PointFactor);
                 if (NextLevel > User.Level)
                 {
                     var NextRole = Roles.FirstOrDefault(x => x.Value == NextLevel);

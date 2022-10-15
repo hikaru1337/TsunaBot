@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TsunaBot.DataBase.Models
 {
@@ -9,7 +10,11 @@ namespace TsunaBot.DataBase.Models
         public TimeSpan VoiceActive { get; set; }
         public ulong Coins { get; set; }
         public ulong XP { get; set; }
-        public ushort Level => (ushort)Math.Sqrt(XP / 100);
+        public ushort Level => (ushort)Math.Sqrt(XP / PointFactor);
+
+        [NotMapped]
+        public static uint PointFactor = 100;
+
         public DateTime DailyCoin { get; set; }
         public DateTime DailyRep { get; set; }
         public ushort Streak { get; set; }
@@ -19,8 +24,5 @@ namespace TsunaBot.DataBase.Models
         public Users UsersM { get; set; }
         public DateTime UsersMTime { get; set; }
         public ICollection<Roles_User> Roles_User { get; set; }
-
-        public ulong Minecraft_UserId { get; set; }
-        public Minecraft_User Minecraft_User { get; set; }
     }
 }

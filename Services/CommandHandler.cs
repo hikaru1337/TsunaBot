@@ -33,36 +33,8 @@ namespace TsunaBot.Services
             _discord.ButtonExecuted += ButtonHandler;
             _discord.Ready += _discord_Ready;
             _discord.RoleDeleted += _discord_RoleDeleted;
-            _discord.ReactionAdded += _discord_ReactionAdded;
         }
 
-        private async Task _discord_ReactionAdded(Cacheable<IUserMessage, ulong> message, Cacheable<IMessageChannel, ulong> channel, SocketReaction emj)
-        {
-            using (var _db = new db())
-            {
-                var chnl = await channel.GetOrDownloadAsync();
-                if (chnl != null && chnl.Id == BotSettings.MinecraftRulesChannel)
-                {
-                    var msg = await message.GetOrDownloadAsync();
-                    if (msg != null && msg.Id == BotSettings.MinecraftRulesMessage)
-                    {
-                        if (emj.Emote.ToString() == "✅")
-                        {
-                            var user = _db.Users.Include(x=>x.Minecraft_User).FirstOrDefault(x=>x.Id == emj.UserId);
-                            if(user == null)
-                                user = await _db.Users.GetOrCreate(emj.UserId);
-
-                            if(user.Minecraft_User == null)
-                            {
-                                user.Minecraft_User = new Minecraft_User { RulesAccept = true, UsersId = emj.UserId };
-                                _db.Users.Update(user);
-                                await _db.SaveChangesAsync();
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         private async Task _discord_RoleDeleted(SocketRole DeletedRole)
         {
@@ -185,54 +157,16 @@ namespace TsunaBot.Services
 
                 if (message.Channel is not IDMChannel DMChannel)
                 {
-
                     var Context = new SocketCommandContext(_discord, UserMessage);
                     var UserGuild = await _db.Users.GetOrCreate(UserMessage.Author.Id);
                     var Settings = _db.Settings.FirstOrDefault();
+
+                    await Leveling.LVL(UserMessage, UserGuild); // User LevelAdd
+
+                    
                     int argPos = 0;
                     if (UserMessage.HasStringPrefix(Settings.Prefix, ref argPos, StringComparison.InvariantCultureIgnoreCase))
                         await _commands.ExecuteAsync(Context, argPos, _provider);
-
-                    await Leveling.LVL(UserMessage, UserGuild);
-                }
-                else
-                {
-                    var MinecraftUser = _db.Minecraft_User.FirstOrDefault(x=>x.UsersId == UserMessage.Author.Id);
-                    if(MinecraftUser != null)
-                    {
-                        if(!MinecraftUser.UserNameConfirmed)
-                        {
-                            var emb = new EmbedBuilder().WithColor(BotSettings.TsunaColor).WithAuthor("Подтверждение Minecraft ника ");
-                            if (MinecraftUser.UserName != null && UserMessage.Content == "Подтверждаю")
-                            {
-                                MinecraftUser.UserNameConfirmed = true;
-                                string Password = null;
-                                int PasswordLenght = 6;
-                                var rnd = new Pcg.PcgRandom();
-                                for (int i = 0; i < PasswordLenght; i++)
-                                {
-                                    var RandomNumber = rnd.Next(97, 122);
-                                    var ConvertedNumber = Convert.ToChar(RandomNumber);
-                                    Password += ConvertedNumber;
-                                }
-                                await myrcon.SendQuery($"register {MinecraftUser.UserName} {Password}");
-                                emb.WithDescription($"Поздравляю, вы привязали имя: `{MinecraftUser.UserName}`\nВаш пароль: `{Password}`\n\nЧтобы сменить пароль, авторизуйтесь на сервере,\nи напишите `/changepassword [старый пароль] [новый]`");
-                                var prefix = _db.Settings.FirstOrDefault().Prefix;
-                                emb.WithFooter($"Чтобы активировать доступ, вернитесь в канал, и напишите команду {prefix}mineget");
-                                emb.Author.Name += "[4/5]";
-                            }
-                            else 
-                            {
-                                MinecraftUser.UserName = UserMessage.Content;
-                                emb.WithDescription($"Ваш никнейм для майнкрафта: `{UserMessage.Content}`\n" +
-                                                    $"Чтобы подтвердить имя, напишите `Подтверждаю`");
-                                emb.Author.Name += "[3/5]";
-                            }
-                            _db.Minecraft_User.Update(MinecraftUser);
-                            await _db.SaveChangesAsync();
-                            await message.Channel.SendMessageAsync("", false, emb.Build());
-                        }
-                    }
                 }
             }
         }

@@ -1,14 +1,10 @@
-﻿using CoreRCON;
-using DarlingNet.Services.LocalService;
-using DarlingNet.Services.LocalService.Attribute;
+﻿using DarlingNet.Services.LocalService.Attribute;
 using DarlingNet.Services.LocalService.VerifiedAction;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using TsunaBot.DataBase;
 using TsunaBot.DataBase.Models;
@@ -31,9 +27,9 @@ namespace TsunaBot.Modules
                 if (User == null)
                     User = Context.User as SocketGuildUser;
                 var emb = new EmbedBuilder().WithColor(BotSettings.TsunaColor).WithAuthor($"{User}", User.GetAvatarUrl()).WithThumbnailUrl(User.GetAvatarUrl());
-                var UserDataBase = _db.Users.Include(x => x.Minecraft_User).ThenInclude(x => x.Minecraft_User_Subscribe).FirstOrDefault(x => x.Id == User.Id);
-                uint count = Convert.ToUInt32(UserDataBase.Level * 80 * UserDataBase.Level);
-                uint countNext = Convert.ToUInt32((UserDataBase.Level + 1) * 80 * (UserDataBase.Level + 1));
+                var UserDataBase = _db.Users.FirstOrDefault(x => x.Id == User.Id);
+                uint count = Convert.ToUInt32(UserDataBase.Level * Users.PointFactor * UserDataBase.Level);
+                uint countNext = Convert.ToUInt32((UserDataBase.Level + 1) * Users.PointFactor * (UserDataBase.Level + 1));
 
                 string DailyCoin = null;
                 TimeSpan TimeToDaily = UserDataBase.DailyCoin - DateTime.Now;
@@ -83,28 +79,6 @@ namespace TsunaBot.Modules
                 emb.AddField("Звездочки", $"Количество: {UserDataBase.Coins}\nКомбо получения звездочек: {UserDataBase.Streak}\n{DailyCoin}", true);
                 emb.AddField("Опыт", $"Уровень: {UserDataBase.Level}\nОпыт: {UserDataBase.XP - count}/{countNext - count}\nАктивность в голосовых чатах: {VoiceHourse}:{VoiceActive.Minutes}:{VoiceActive.Seconds}", false);
 
-                string prefix = _db.Settings.FirstOrDefault().Prefix;
-                string MinecraftText = $"Попробуй бесплатно: {prefix}mineget";
-
-                if(UserDataBase.Minecraft_User != null)
-                {
-                    var SubscribeList = UserDataBase.Minecraft_User.Minecraft_User_Subscribe.OrderBy(x=>x.SubscribeTo);
-                    if(SubscribeList.Count() > 0)
-                    {
-                        MinecraftText = $"Ник: {UserDataBase.Minecraft_User.UserName}\n";
-                        var Subscribe = SubscribeList.FirstOrDefault(x => x.ActiveSubscribe);
-                        if (Subscribe == null)
-                        {
-                            Subscribe = SubscribeList.LastOrDefault();
-                            MinecraftText += $"Подписка истекла!\nПоследняя подписка до: {Subscribe.SubscribeTo}";
-                        }
-                        else
-                            MinecraftText += $"Подписка до: {Subscribe.SubscribeTo}\nПремиум доступ: {(Subscribe.Premium ? "Да" : "Нет")}";
-                    }
-
-                }
-
-                emb.AddField("Minecraft Profile", MinecraftText, true);
 
                 //emb.WithDescription($"Звездочек: {UserDataBase.Coins}\n" +
                 //                                             $"Репутация: {UserDataBase.Reputation}\n\n" +
@@ -182,7 +156,7 @@ namespace TsunaBot.Modules
             using (db _db = new())
             {
                 var emb = new EmbedBuilder().WithColor(BotSettings.TsunaColor).WithAuthor($" - {(User != null ? "репутация" : "звездочки")} 🏧", Context.User.GetAvatarUrl());
-                var UserThis = await _db.Users.GetOrCreate(Context.User.Id);
+                var UserThis = _db.Users.FirstOrDefault(x=>x.Id == Context.User.Id);
                 var DateNow = DateTime.Now;
 
                 DateTime Daily = UserThis.DailyCoin;
@@ -215,7 +189,7 @@ namespace TsunaBot.Modules
                             UserThis.Coins += amt;
                             emb.WithDescription($"Звездочек получено: {amt}");
                         }
-                        emb.Description += $"\nКомбо: {UserThis.Streak}\nСледующее получения звездочек через 5 часов";
+                        emb.Description += $"\nКомбо: {UserThis.Streak}\nСледующее получение звездочек через 5 часов";
                         _db.Users.Update(UserThis);
                         await _db.SaveChangesAsync();
                     }
@@ -225,15 +199,22 @@ namespace TsunaBot.Modules
                             emb.WithDescription("Повысить репутацию самому себе нельзя.");
                         else
                         {
-                            if (UserThis.LastUserId == 0 || User.Id != UserThis.LastUserId)
+                            if (User.Id != UserThis.LastUserId)
                             {
                                 var UserRep = await _db.Users.GetOrCreate(User.Id);
+                                int CountHours = 5;
                                 await RepRole(User, UserRep.Reputation);
                                 UserRep.Reputation += 1;
-                                UserThis.LastUserId = UserRep.Id;
-                                UserThis.DailyRep = DateNow.AddHours(5);
-                                
-                                emb.WithDescription($"{Context.User.Mention} повысил репутацию {User.Mention}\nРепутация: +{UserRep.Reputation}\nСледующая репутация через 5 часов"); // {Math.Round((UserThis.DailyRep - DateTime.Now).TotalHours)}
+                                UserThis.LastUserId = User.Id;
+                                UserThis.DailyRep = DateNow.AddHours(CountHours);
+
+                                var NextRole = _db.Roles_Type.Where(x => x.Type == RoleTypeEnum.Reputation).AsEnumerable().OrderBy(x=>x.Value).LastOrDefault(x=> UserRep.Reputation <= x.Value);
+                                string NextRoleString = "Отсутствует";
+                                if (NextRole != null)
+                                    NextRoleString = $"<@&{NextRole.RoleId}>";
+
+
+                                emb.WithDescription($"{Context.User.Mention} повысил репутацию {User.Mention}\nРепутация: +{UserRep.Reputation}\n\nСледующая роль {NextRoleString}\nСледующая репутация через {CountHours} часов"); // {Math.Round((UserThis.DailyRep - DateTime.Now).TotalHours)}
                                 _db.Users.UpdateRange(new[] { UserRep, UserThis });
                                 await _db.SaveChangesAsync();
                             }
@@ -337,155 +318,6 @@ namespace TsunaBot.Modules
 
                 await Context.Channel.SendMessageAsync("", false, emb.Build());
             }
-        }
-
-        [Command("mineget"), Alias("mg")]
-        [Summary("Получить доступ к серверу")]
-        public async Task mineget()
-        {
-            using (db _db = new())
-            {
-                var emb = new EmbedBuilder().WithColor(BotSettings.TsunaColor).WithAuthor($" - Получение доступа ", Context.User.GetAvatarUrl()).WithDescription("");
-                var ThisUser = _db.Users.Include(x=>x.Minecraft_User).ThenInclude(x=>x.Minecraft_User_Subscribe).FirstOrDefault(x=>x.Id == Context.User.Id);
-                int StartMaxLevel = 15;
-                if(ThisUser.Level >= StartMaxLevel)
-                {
-                    if (ThisUser.Minecraft_User != null && ThisUser.Minecraft_User.RulesAccept)
-                    {
-                        if(ThisUser.Minecraft_User.UserName == null)
-                        {
-                            emb.Author.Name += "[2/5]";
-                            emb.WithDescription("Сейчас вам должен написать наш Бот, отправьте ему свой ник Minecraft, для привязки к серверу.");
-                            try
-                            {
-                                await Context.User.SendMessageAsync("Привет, отправь сообщение со своим ником Minecraft!");
-                            }
-                            catch (Exception)
-                            {
-                                emb.Description += "\n\n" +
-                                                "Боту не удалось вам написать:\n" +
-                                                "1.Нажмите правой кнопкой мыши по боту\n" +
-                                                "2.Нажмите `написать сообщение`";
-                                emb.WithImageUrl("https://media.discordapp.net/attachments/1003743130622885908/1005867148666753065/unknown.png");
-                            }
-                        }
-                        else
-                        {
-                            var ThisSubsTime = ThisUser.Minecraft_User.Minecraft_User_Subscribe.FirstOrDefault(x=>x.ActiveSubscribe);
-                            if (ThisSubsTime != null)
-                            {
-                                var prefix = getprefix();
-                                emb.WithDescription($"Ваша подписка активна до `{ThisSubsTime.SubscribeTo.ToString("dd.MM.yy")}`\n\n" +
-                                                    $"Хотите продлить подписку больше чем на месяц?\nНапишите {prefix}minebuy");
-                            }
-                            else
-                            {
-                                int MaxLevel = StartMaxLevel + (5 * ThisUser.Minecraft_User.CountSubs);
-
-                                if (ThisUser.Level >= MaxLevel)
-                                {
-                                    DateTime LastTime = DateTime.Now;
-                                    var newsubscribe = new Minecraft_User_Subscribe { SubscribeAt = LastTime, Minecraft_User = ThisUser.Minecraft_User };
-                                    newsubscribe.SubscribeTo = LastTime.AddMonths(1);
-                                    ThisUser.Minecraft_User.Minecraft_User_Subscribe.Add(newsubscribe);
-                                    
-                                    _db.Users.Update(ThisUser);
-                                    await _db.SaveChangesAsync();
-
-                                    await myrcon.SendQuery($"whitelist add {ThisUser.Minecraft_User.UserName}");
-                                    await TaskTimer.CheckMinecraftSubscribeNow(ThisUser.Minecraft_User,Context.User as SocketGuildUser);
-                                    emb.Author.Name += "[5/5]";
-                                    emb.WithDescription("Вы успешно получили бесплатный месяц доступа на сервер.\n\nПозовите своих друзей на наш проект, вы нам очень поможете.");
-                                }
-                                else
-                                {
-                                    var prefix = getprefix();
-                                    string Leveltext = getleveltext(StartMaxLevel, prefix);
-                                    emb.WithDescription(Leveltext);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        emb.WithDescription($"Перед тем как получить доступ к серверу,\nвы должны прочитать правила: <#{BotSettings.MinecraftRulesChannel}>.")
-                           .WithFooter("Как прочитаете, напишите команду еще раз.");
-                        emb.Author.Name += "[1/5]";
-                    }
-                }
-                else
-                {
-                    var prefix = getprefix();
-                    string Leveltext = getleveltext(StartMaxLevel, prefix);
-                    emb.WithDescription(Leveltext);
-                }
-
-                string getprefix() => _db.Settings.FirstOrDefault().Prefix;
-
-                string getleveltext(int levelneed,string prefix) => $"Чтобы получить доступ, нужно иметь {levelneed} уровень.\n" +
-                                                      $"На данный момент у вас: {ThisUser.Level} уровень.\n\n" +
-                                                      $"Вы можете купить доступ к серверу без уровня.\n" +
-                                                      $"Купить - {prefix}minebuy";
-
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
-            }
-        }
-
-        [Command("minebuy"), Alias("mb")]
-        [Summary("Купить доступ к серверу")]
-        [MarryPermission]
-        public async Task minebuy(string buy = "некупить")
-        {
-            using (var _db = new db())
-            {
-                var channel = Context.Channel;
-                var prefix = _db.Settings.FirstOrDefault().Prefix;
-                var emb = new EmbedBuilder().WithColor(BotSettings.TsunaColor).WithAuthor($" - Премиум доступ к Minecraft серверу", Context.User.GetAvatarUrl());
-                if (buy == "некупить")
-                {
-                    emb.WithDescription("Зачем покупать премиум доступ, если я могу играть бесплатно?\n" +
-                                    "-Вы будете полностью правы, НО!\n\n" +
-                                    "1.Ваши деньги уходят на развитие сервера!\n" +
-                                    "2.Благодаря вам сервер будет существовать!\n" +
-                                    "3.В ивентах, у вас будет возможность выиграть деньги.\n" +
-                                    "4.В дискорде у вас будет роль <@&1003741382164353076>!\n" +
-                                    "5.Доступ можно покупать больше чем на 1 месяц!\n" +
-                                    "6.Цена всего **100** рублей, зато сколько эмоций!\n\n" +
-                                    "Благодаря вашей активности, и денежной помощи, мы сможем\n" +
-                                    "создать интересный проект, и вы будете частью этой истории!\n\n" +
-                                    $"Готовы стать частью истории? Пишите - `{prefix}minebuy купить`");
-                }
-                else if (buy == "купить")
-                {
-                    var ThisUser = _db.Users.Include(x=>x.Minecraft_User).FirstOrDefault(x => x.Id == Context.User.Id);
-                    if(ThisUser.Minecraft_User != null && ThisUser.Minecraft_User.RulesAccept)
-                    {
-                        if (ThisUser.Minecraft_User.UserName == null)
-                            emb.WithDescription("Для привязки вашей учетной записи, введите свой ник minecraft, в личные сообщения БОТУ!");
-                        else
-                        {
-                            var bchannel = Context.Guild.GetTextChannel(1003743130622885908);
-                            var embb = emb;
-                            embb.WithDescription($"{Context.User.Mention}, хочет PREMIUM доступ.\n" +
-                                                 $"Ник в Minecraft: {ThisUser.Minecraft_User.UserName}\n" +
-                                                 $"Уровень пользователя: {ThisUser.Level}\n" +
-                                                 $"Зарегистрирован: {Context.User.CreatedAt.ToString("dd.MM.yy mm:HH")}\n" +
-                                                 $"На сервере с: {(Context.User as SocketGuildUser).JoinedAt.Value.ToString("dd.MM.yy mm:HH")}\n" +
-                                                 $"Кол-во сообщений: {ThisUser.XP / 10}");
-                            await bchannel.SendMessageAsync("", false, embb.Build());
-                            emb.WithDescription("Спасибо за желание помочь нам!\n" +
-                                            "Ожидайте ответа от пользователя с ролью <@&1003647883377123328> <:cutebunny:962773673834577940>");
-                        }
-                    }
-                    else
-                        emb.WithDescription($"Перед тем как купить доступ, вы должны прочитать правила: <#{BotSettings.MinecraftRulesChannel}>.");
-                }
-                else
-                    emb.WithDescription($"Используйте: {prefix}minebuy купить\nЕсли хотите ознакомиться: {prefix}minebuy");
-
-                await Context.Channel.SendMessageAsync("", false, emb.Build());
-            }
-
         }
 
         [Command("divorce"), Alias("di")]

@@ -16,60 +16,6 @@ namespace TsunaBot.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0-preview.5.21301.9");
 
-            modelBuilder.Entity("TsunaBot.DataBase.Models.Minecraft_User", b =>
-                {
-                    b.Property<ulong>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("RulesAccept")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("UserNameConfirmed")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<ulong>("UsersId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UsersId")
-                        .IsUnique();
-
-                    b.ToTable("Minecraft_User");
-                });
-
-            modelBuilder.Entity("TsunaBot.DataBase.Models.Minecraft_User_Subscribe", b =>
-                {
-                    b.Property<ulong>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<ulong>("Minecraft_UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Premium")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("SubscribeAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<ulong>("SubscribeGivenAdminId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("SubscribeTo")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Minecraft_UserId");
-
-                    b.ToTable("Minecraft_User_Subscribe");
-                });
-
             modelBuilder.Entity("TsunaBot.DataBase.Models.Roles", b =>
                 {
                     b.Property<ulong>("Id")
@@ -105,7 +51,7 @@ namespace TsunaBot.Migrations
 
             modelBuilder.Entity("TsunaBot.DataBase.Models.Roles_User", b =>
                 {
-                    b.Property<uint>("Id")
+                    b.Property<ulong>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -167,9 +113,6 @@ namespace TsunaBot.Migrations
                     b.Property<ulong>("LastUserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<ulong>("Minecraft_UserId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<ulong>("Reputation")
                         .HasColumnType("INTEGER");
 
@@ -193,28 +136,6 @@ namespace TsunaBot.Migrations
                     b.HasIndex("UsersMId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("TsunaBot.DataBase.Models.Minecraft_User", b =>
-                {
-                    b.HasOne("TsunaBot.DataBase.Models.Users", "Users")
-                        .WithOne("Minecraft_User")
-                        .HasForeignKey("TsunaBot.DataBase.Models.Minecraft_User", "UsersId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
-
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("TsunaBot.DataBase.Models.Minecraft_User_Subscribe", b =>
-                {
-                    b.HasOne("TsunaBot.DataBase.Models.Minecraft_User", "Minecraft_User")
-                        .WithMany("Minecraft_User_Subscribe")
-                        .HasForeignKey("Minecraft_UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Minecraft_User");
                 });
 
             modelBuilder.Entity("TsunaBot.DataBase.Models.Roles_Type", b =>
@@ -256,11 +177,6 @@ namespace TsunaBot.Migrations
                     b.Navigation("UsersM");
                 });
 
-            modelBuilder.Entity("TsunaBot.DataBase.Models.Minecraft_User", b =>
-                {
-                    b.Navigation("Minecraft_User_Subscribe");
-                });
-
             modelBuilder.Entity("TsunaBot.DataBase.Models.Roles", b =>
                 {
                     b.Navigation("Roles_Type");
@@ -270,8 +186,6 @@ namespace TsunaBot.Migrations
 
             modelBuilder.Entity("TsunaBot.DataBase.Models.Users", b =>
                 {
-                    b.Navigation("Minecraft_User");
-
                     b.Navigation("Roles_User");
                 });
 #pragma warning restore 612, 618

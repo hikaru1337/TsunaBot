@@ -32,7 +32,6 @@ namespace TsunaBot
             services.GetRequiredService<CommandHandler>(); 		// Start the command handler service
             services.GetRequiredService<DiscordSocketClient>();
             await services.GetRequiredService<StartUpService>().StartAsync();       // Start the startup service
-            await services.GetRequiredService<TaskTimer>().CheckMinecraftSubscribe();
             await Task.Delay(-1);
         }
 
@@ -59,7 +58,6 @@ namespace TsunaBot
                     .AddSingleton<LoggingService>()
                     .AddSingleton<StartUpService>()
                     .AddSingleton<VoiceActive>()
-                    .AddSingleton<TaskTimer>()
                     .AddSingleton(Configuration)
                     //.AddLogging()
                     .BuildServiceProvider();
